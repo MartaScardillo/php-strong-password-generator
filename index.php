@@ -17,9 +17,14 @@ include("./partials/functions.php");
         <input type="submit" value="Genera" name='submit'>
     </form>
     <?php
+    // mi assicuro che parta la funzione passwordGenerator solo se i dati sono corretti e se sono stati inviati
     if (isset($_GET['submit'])) {
         $password_length = $_GET['password_input'];
-        echo '<h2> Password: ' . passwordGenerator($password_length) . '</h2>';
+        if ($password_length <= 4) {
+            echo '<h2> Errore! Inserire un numero maggiore di 4 </h2>';
+        } else {
+            echo '<h2> Password: ' . passwordGenerator($password_length) . '</h2>';
+        }
     }
     ;
     ?>
