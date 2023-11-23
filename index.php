@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("./partials/functions.php");
 ?>
 
@@ -23,7 +24,8 @@ include("./partials/functions.php");
         if ($password_length <= 4) {
             echo '<h2> Errore! Inserire un numero maggiore di 4 </h2>';
         } else {
-            echo '<h2> Password: ' . passwordGenerator($password_length) . '</h2>';
+            $_SESSION['generated_password'] = passwordGenerator($password_length);
+            header('Location:' . 'password.php');
         }
     }
     ;
